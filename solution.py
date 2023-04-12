@@ -9,12 +9,8 @@ def solution(x_success: int,
              y_success: int, 
              y_cnt: int) -> bool:
 
-    alpha = 0.04 
+    alpha = 0.04
     count = np.array([x_success, y_success])
     nobs = np.array([x_cnt, y_cnt])
-    stat, pval = proportions_ztest(count, nobs, alternative='smaller')
-    if pval < alpha :
-      res = True 
-    else:
-      res = False  
-    return res 
+    stat, pval = proportions_ztest(count, nobs, alternative='smaller') #larger
+    return pval < alpha
